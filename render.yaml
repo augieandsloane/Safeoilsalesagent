@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: safe-oil-pipedrive
+    runtime: docker
+    branch: main
+    plan: starter
+    healthCheckPath: /healthz
+    disk:
+      name: pipedrive-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /data/pipedrive-connector.sqlite
+      - key: BASE_URL
+        sync: false
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
+      - key: PIPEDRIVE_CLIENT_ID
+        sync: false
+      - key: PIPEDRIVE_CLIENT_SECRET
+        sync: false

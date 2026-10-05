@@ -1,0 +1,11 @@
+services:
+  connector:
+    build: .
+    env_file: ${ENV_FILE:-.env}
+    ports:
+      - "3000:3000"
+    volumes:
+      - pipedrive_connector_data:/data
+    restart: unless-stopped
+volumes:
+  pipedrive_connector_data:
